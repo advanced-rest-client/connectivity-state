@@ -1,6 +1,6 @@
 {
   "name": "connectivity-state",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "Apache-2.0 OR CC-BY-4.0",
   "description": "An element that detects online/offline states and informs about it other compopnents",
   "devDependencies": {
