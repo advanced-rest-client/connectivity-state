@@ -32,9 +32,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script>
     /* global suite, test, fixture, assert */
     suite('basic', function() {
+      var element;
+      setup(function() {
+        element = fixture('basic');
+      });
       test('`connectivity-state` should be initialized', function() {
-        var element = fixture('basic');
-        assert.equal(element.isAttached, true, 'element.isAttached equals true');
+        assert.equal(element.online, true, 'element.online equals true');
       });
     });
     </script>

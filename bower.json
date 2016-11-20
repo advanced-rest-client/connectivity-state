@@ -6,7 +6,10 @@
   ],
   "keywords": [
     "web-components",
-    "polymer"
+    "polymer",
+    "connectivity",
+    "online",
+    "offline"
   ],
   "private": true,
   "main": [
