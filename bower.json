@@ -1,6 +1,7 @@
 {
   "name": "connectivity-state",
   "description": "An element that detects online/offline states and informs about it other compopnents",
+  "version": "1.0.0",
   "authors": [
     "The Advanced REST client authors <arc@mulesoft.com>"
   ],
@@ -39,6 +40,5 @@
     "bower_components",
     "test",
     "tasks"
-  ],
-  "version": "0.0.2"
+  ]
 }
