@@ -1,10 +1,10 @@
 {
-  "name": "@arc-components/connectivity-state",
+  "name": "@advanced-rest-client/connectivity-state",
   "version": "2.0.0-preview",
   "license": "Apache-2.0",
   "description": "An element that detects online/offline states and informs about it other components",
   "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.1.1"
+    "@polymer/gen-typescript-declarations": "^1.6.0"
   },
   "private": false,
   "main": "connectivity-state.html",
