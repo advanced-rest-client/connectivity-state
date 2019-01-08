@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>connectivity-state test</title>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../connectivity-state.html">
+</head>
+<body>
+  <test-fixture id="Basic">
+    <template>
+      <connectivity-state></connectivity-state>
+    </template>
+  </test-fixture>
+
+  <script>
+  suite('connectivity-state', () => {
+    let element;
+    setup(() => {
+      element = fixture('Basic');
+    });
+
+    test('Initial online value is set', () => {
+      assert.typeOf(element.online, 'boolean');
+    });
+
+    function fire(type) {
+      document.body.dispatchEvent(new CustomEvent(type, {
+        bubbles: true
+      }));
+    }
+
+    test('Sets value to false', () => {
+      element._setOnline(true);
+      fire('offline');
+      assert.isFalse(element.online);
+    });
+
+    test('Dispatches event whhen offline', (done) => {
+      element._setOnline(true);
+      element.addEventListener('connectivity-state-changed', function clb(e) {
+        element.removeEventListener('connectivity-state-changed', clb);
+        assert.isFalse(e.detail.value);
+        done();
+      });
+      fire('offline');
+    });
+
+    test('Sets value to true', () => {
+      element._setOnline(false);
+      fire('online');
+      assert.isTrue(element.online);
+    });
+
+    test('Dispatches event whhen offline', (done) => {
+      element._setOnline(false);
+      element.addEventListener('connectivity-state-changed', function clb(e) {
+        element.removeEventListener('connectivity-state-changed', clb);
+        assert.isTrue(e.detail.value);
+        done();
+      });
+      fire('online');
+    });
+  });
+  </script>
+</body>
+</html>
