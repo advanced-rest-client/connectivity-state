@@ -1,23 +1,38 @@
 {
-  "name": "@advanced-rest-client/connectivity-state",
-  "version": "2.0.0",
-  "license": "Apache-2.0",
   "description": "An element that detects online/offline states and informs about it other components",
-  "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.6.0"
+  "keywords": [
+    "web-components",
+    "polymer",
+    "connectivity",
+    "online",
+    "offline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/advanced-rest-client/connectivity-state.git"
   },
-  "private": false,
-  "main": "connectivity-state.html",
+  "name": "@advanced-rest-client/connectivity-state",
+  "version": "3.0.0-preview.1",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@polymer/gen-typescript-declarations": "^1.6.1",
+    "@polymer/iron-component-page": "^4.0.0",
+    "@polymer/iron-demo-helpers": "^3.0.0",
+    "@polymer/iron-test-helpers": "^3.0.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.3",
+    "wct-mocha": "^1.0.0"
+  },
+  "main": "connectivity-state.js",
   "scripts": {
     "lint": "polymer lint connectivity-state.html",
     "test-sauce": "polymer test --plugin sauce --job-name \"connectivity-state:local-test\"",
     "test": "polymer test --plugin local",
     "update-deps": "npm update --quiet && bower update --quiet",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/advanced-rest-client/connectivity-state.git"
   },
   "bugs": {
     "url": "https://github.com/advanced-rest-client/connectivity-state/issues",
@@ -26,5 +41,13 @@
   "authors": [
     "Pawel Psztyc",
     "The Advanced REST client authors <arc@mulesoft.com>"
-  ]
+  ],
+  "contributors": [
+    "Pawel Psztyc",
+    "The Advanced REST client authors <arc@mulesoft.com>"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-meta": "^3.0.0"
+  }
 }

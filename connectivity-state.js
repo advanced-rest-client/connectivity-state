@@ -1,6 +1,5 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../iron-meta/iron-meta.html">
-<script>
+import {PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-meta/iron-meta.js';
 /**
  * `connectivity-state`
  *
@@ -63,8 +62,7 @@
  * @demo demo/index.html
  * @memberof ApiElements
  */
-class ConnectivityState extends Polymer.Element {
-  static get is() { return 'connectivity-state'; }
+class ConnectivityState extends PolymerElement {
   static get properties() {
     return {
       /**
@@ -137,5 +135,4 @@ class ConnectivityState extends Polymer.Element {
    * @param {Boolean} value True when online, false when not.
    */
 }
-window.customElements.define(ConnectivityState.is, ConnectivityState);
-</script>
+window.customElements.define('connectivity-state', ConnectivityState);
