@@ -1,5 +1,5 @@
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/iron-meta/iron-meta.js';
+import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
+import '../../@polymer/iron-meta/iron-meta.js';
 /**
  * `connectivity-state`
  *
