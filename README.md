@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.org/advanced-rest-client/api-url-data-model.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/connectivity-state)
+[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/connectivity-state.svg)](https://www.npmjs.com/package/@advanced-rest-client/connectivity-state)
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/advanced-rest-client/connectivity-state)
+[![Build Status](https://travis-ci.org/advanced-rest-client/connectivity-state.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/connectivity-state)
+
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@advanced-rest-client/connectivity-state)
 
 # connectivity-state
 
