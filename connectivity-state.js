@@ -1,119 +1,97 @@
-import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
-import '../../@polymer/iron-meta/iron-meta.js';
 /**
- * `connectivity-state`
+ * A callback function to be called for `onchange` event.
+ * @type {Function}
+ */
+let changeClb;
+/**
+ * An element that detects online/offline states and informs about it other compopnents.
  *
- * An element that detects online/offline states and informs about it other compopnents
- *
- * An element that detects online/offline states and informs about it other
- * compopnents. Checking conectivity in browser is a tricky task. Browsers
+ * Checking conectivity in browser is a bit tricky task. Browsers
  * vendors can't agree on what the online/offline status means and therefore
- * even if the browser says that it has intentet connection in reality it may
- * not (because it may have LAN aceess).
+ * even if the browser says that it has a connection in reality it may
+ * not be connected to the internet. However it may have LAN access.
  *
- * This element is doing whatever it's available in current browser to
- * inform the app about current conectivity state.
- *
- * Note: You can be sure that if the status is `offline` the browser
+ * Note: You can be sure that if the status is `offline` then the browser
  * is offline. But when the status is onLine it may mean that there is a
  * network connection but there's no internet connection
  * (and therefore you are offline for the outside world).
  *
- * In the element, if the `online` attribute is set to `false` the the app
+ * In the element, if the `online` attribute is set to `false` the app
  * is offline but when it's set to true it probably is online but may not
  * have access to the internet.
  *
- * ### Example
+ * ## Example
+ *
+ * ### Polymer template
  *
  * ```html
  * <connectivity-state online="{{isOnline}}"></connectivity-state>
  * ```
  *
- * Other elements and/or app can access this information via Polymer's data
- * binding system or:
- *
- * 1) By listening for an event `connectivity-state-changed`
- *
- * ```javascript
- * document.addEventListener('connectivity-state-changed', (e) => {
- *  // e.detail.online; (boolean, false is offline)
- * });
- * ```
- *
- * 2) Reading value from the `<iron-meta>` element
- *
- * ```html
- * <iron-meta key="connectivity-state" value="{{networkOnline}}"></iron-meta>
- * ```
- *
- * 3) In javascript using one of the following methods:
- * ```javascipt
- * // With Polymer
- * new Polymer.IronMetaQuery({key: 'connectivity-state'}).value;
- * // Otherwise
- * document.createElement('iron-meta').byKey('connectivity-state');
- * // false if offline.
- * ```
- *
- * Methods above are equal and can be used with this element.
- *
  * @customElement
- * @polymer
  * @demo demo/index.html
  * @memberof ApiElements
  */
-class ConnectivityState extends PolymerElement {
-  static get properties() {
-    return {
-      /**
-       * Current conectivity state.
-       * If set to false then thete's no networ connection.
-       * If true it means that the network is up an running and the app
-       * is probably able to connect with the outside world but it's not
-       * guaranteed.
-       */
-      online: {
-        type: Boolean,
-        value: function() {
-          return navigator.onLine;
-        },
-        notify: true,
-        readOnly: true,
-        observer: '_onlineStateChanged'
-      }
-    };
+export class ConnectivityState extends HTMLElement {
+  /**
+   * @return {Boolean} Current conectivity state.
+   * If set to false then thete's no networ connection.
+   * If true it means that the network is up an running and the app
+   * is probably able to connect with the outside world but it's not
+   * guaranteed.
+   */
+  get online() {
+    return this.__online;
+  }
+  /**
+   * @return {Function|undefined} A function previously used to register `change`
+   * event handler.
+   */
+  get onchange() {
+    return changeClb;
+  }
+  /**
+   * @param {Function} clb Event handler for `change` event.
+   */
+  set onchange(clb) {
+    if (changeClb) {
+      this.removeEventListener('change', changeClb);
+    }
+    if (typeof clb !== 'function') {
+      changeClb = null;
+      return;
+    }
+    changeClb = clb;
+    this.addEventListener('change', changeClb);
   }
 
   constructor() {
     super();
     this._onlineHandler = this._onlineHandler.bind(this);
     this._offlineHandler = this._offlineHandler.bind(this);
+
+    this._setOnline(navigator.onLine);
   }
 
   connectedCallback() {
-    super.connectedCallback();
     window.addEventListener('online', this._onlineHandler);
     window.addEventListener('offline', this._offlineHandler);
+    if (!this.hasAttribute('aria-hidden')) {
+      this.setAttribute('aria-hidden', 'true');
+    }
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener('online', this._onlineHandler);
     window.removeEventListener('offline', this._offlineHandler);
   }
 
-  _onlineStateChanged(state) {
-    const meta = document.createElement('iron-meta');
-    meta.key = 'connectivity-state';
-    meta.value = state;
-
-    this.dispatchEvent(new CustomEvent('connectivity-state-changed', {
-      bubbles: true,
-      composed: true,
-      detail: {
-        value: state
-      }
-    }));
+  _setOnline(state) {
+    this.__online = state;
+    const detail = { value: state };
+    this.dispatchEvent(new CustomEvent('change', { detail }));
+    // Polymer compability
+    this.dispatchEvent(new CustomEvent('online-changed', { detail }));
   }
   /**
    * Handler for `online` event
@@ -131,7 +109,7 @@ class ConnectivityState extends PolymerElement {
   /**
    * Dispatched when connectivity state change
    *
-   * @event connectivity-state-changed
+   * @event change
    * @param {Boolean} value True when online, false when not.
    */
 }

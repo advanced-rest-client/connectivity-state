@@ -5,13 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <title>connectivity-state demo</title>
-  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-  <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../node_modules/@advanced-rest-client/arc-demo-helper/arc-demo-helper.js"></script>
   <script type="module" src="../connectivity-state.js"></script>
 
-  <custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
+  <style>
     *[hidden] {
       display: none !important;
     }
@@ -29,34 +26,38 @@
       padding: 12px;
       color: #FFEBEE;
     }
-    </style>
-  </custom-style>
+  </style>
 </head>
 <body unresolved>
   <div class="vertical-section-container centered">
     <p>Before you start, got to the DevTools and find the "offline" checkbox in the network panel. While playing with the examples change the connectivity state to observe changes.</p>
 
     <h3>Detecting offline state</h3>
-    <demo-snippet>
+    <arc-demo-helper>
       <template>
         <connectivity-state></connectivity-state>
         <p online>You are connected</p>
         <p offline hidden>You are disconnected</p>
+
+        <script>
+        {
+          window.customElements.whenDefined('connectivity-state').then(() => {
+            document.querySelector('connectivity-state').onchange = (e) => {
+              const online = document.querySelector('*[online]');
+              const offline = document.querySelector('*[offline]');
+              if (e.target.online) {
+                online.removeAttribute('hidden');
+                offline.setAttribute('hidden', true);
+              } else {
+                offline.removeAttribute('hidden');
+                online.setAttribute('hidden', true);
+              }
+            };
+          });
+        }
+        </script>
       </template>
-    </demo-snippet>
+    </arc-demo-helper>
   </div>
-  <script type="module">
-    document.addEventListener('connectivity-state-changed', (e) => {
-      const online = Array.from(document.querySelectorAll('*[online]'));
-      const offline = Array.from(document.querySelectorAll('*[offline]'));
-      if (e.detail.value) {
-        online.forEach((i) => i.removeAttribute('hidden'));
-        offline.forEach((i) => i.setAttribute('hidden', true));
-      } else {
-        offline.forEach((i) => i.removeAttribute('hidden'));
-        online.forEach((i) => i.setAttribute('hidden', true));
-      }
-    });
-  </script>
 </body>
 </html>
