@@ -5,88 +5,48 @@
  *   https://github.com/Polymer/tools/tree/master/packages/gen-typescript-declarations
  *
  * To modify these typings, edit the source file(s):
- *   connectivity-state.html
+ *   connectivity-state.js
  */
 
 
 // tslint:disable:variable-name Describing an API that's defined elsewhere.
 // tslint:disable:no-any describes the API as best we are able today
 
-/// <reference path="../polymer/types/polymer-element.d.ts" />
-/// <reference path="../iron-meta/iron-meta.d.ts" />
+export {ConnectivityState};
 
-declare namespace ApiElements {
+declare namespace LogicElements {
 
   /**
-   * `connectivity-state`
+   * An element that detects online/offline states and informs about it other compopnents.
    *
-   * An element that detects online/offline states and informs about it other compopnents
-   *
-   * An element that detects online/offline states and informs about it other
-   * compopnents. Checking conectivity in browser is a tricky task. Browsers
+   * Checking conectivity in browser is a bit tricky task. Browsers
    * vendors can't agree on what the online/offline status means and therefore
-   * even if the browser says that it has intentet connection in reality it may
-   * not (because it may have LAN aceess).
+   * even if the browser says that it has a connection in reality it may
+   * not be connected to the internet. However it may have LAN access.
    *
-   * This element is doing whatever it's available in current browser to
-   * inform the app about current conectivity state.
-   *
-   * Note: You can be sure that if the status is `offline` the browser
+   * Note: You can be sure that if the status is `offline` then the browser
    * is offline. But when the status is onLine it may mean that there is a
    * network connection but there's no internet connection
    * (and therefore you are offline for the outside world).
    *
-   * In the element, if the `online` attribute is set to `false` the the app
+   * In the element, if the `online` attribute is set to `false` the app
    * is offline but when it's set to true it probably is online but may not
    * have access to the internet.
    *
-   * ### Example
+   * ## Example
+   *
+   * ### Polymer template
    *
    * ```html
    * <connectivity-state online="{{isOnline}}"></connectivity-state>
    * ```
-   *
-   * Other elements and/or app can access this information via Polymer's data
-   * binding system or:
-   *
-   * 1) By listening for an event `connectivity-state-changed`
-   *
-   * ```javascript
-   * document.addEventListener('connectivity-state-changed', (e) => {
-   *  // e.detail.online; (boolean, false is offline)
-   * });
-   * ```
-   *
-   * 2) Reading value from the `<iron-meta>` element
-   *
-   * ```html
-   * <iron-meta key="connectivity-state" value="{{networkOnline}}"></iron-meta>
-   * ```
-   *
-   * 3) In javascript using one of the following methods:
-   * ```javascipt
-   * // With Polymer
-   * new Polymer.IronMetaQuery({key: 'connectivity-state'}).value;
-   * // Otherwise
-   * document.createElement('iron-meta').byKey('connectivity-state');
-   * // false if offline.
-   * ```
-   *
-   * Methods above are equal and can be used with this element.
    */
-  class ConnectivityState extends Polymer.Element {
-
-    /**
-     * Current conectivity state.
-     * If set to false then thete's no networ connection.
-     * If true it means that the network is up an running and the app
-     * is probably able to connect with the outside world but it's not
-     * guaranteed.
-     */
-    readonly online: boolean|null|undefined;
+  class ConnectivityState extends HTMLElement {
+    readonly online: Boolean|null;
+    onchange: Function|null|undefined;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    _onlineStateChanged(state: any): void;
+    _setOnline(state: any): void;
 
     /**
      * Handler for `online` event
@@ -100,6 +60,9 @@ declare namespace ApiElements {
   }
 }
 
-interface HTMLElementTagNameMap {
-  "connectivity-state": ApiElements.ConnectivityState;
+declare global {
+
+  interface HTMLElementTagNameMap {
+    "connectivity-state": LogicElements.ConnectivityState;
+  }
 }
