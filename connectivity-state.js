@@ -30,7 +30,7 @@ let changeClb;
  *
  * @customElement
  * @demo demo/index.html
- * @memberof ApiElements
+ * @memberof LogicElements
  */
 export class ConnectivityState extends HTMLElement {
   /**
