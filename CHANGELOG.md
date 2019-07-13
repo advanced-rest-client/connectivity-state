@@ -15,3 +15,33 @@
 
 
 
+# [3.0.0](https://github.com/advanced-rest-client/connectivity-state/compare/2.0.0...3.0.0) (2019-07-13)
+
+
+### Breaking
+
+* Upgrading to Polymer 3 ([7f633997b5353d760dd42f5d17803e48a88de11b](https://github.com/advanced-rest-client/connectivity-state/commit/7f633997b5353d760dd42f5d17803e48a88de11b))
+
+### build
+
+* bumping version ([d8def05a1fc05b8a77be4a84111ad962c9683853](https://github.com/advanced-rest-client/connectivity-state/commit/d8def05a1fc05b8a77be4a84111ad962c9683853))
+
+### docs
+
+* fixing badges in readme file ([ab10efa687e8f03b57b21b01cac6c846a8d9111a](https://github.com/advanced-rest-client/connectivity-state/commit/ab10efa687e8f03b57b21b01cac6c846a8d9111a))
+* updating typpings ([d8e81f9eb3b8a6013bcd85e4b0ac77b28fdeea5d](https://github.com/advanced-rest-client/connectivity-state/commit/d8e81f9eb3b8a6013bcd85e4b0ac77b28fdeea5d))
+
+### New
+
+* Adding npm ignore file ([b7a3b81a946724cc7efd447e28e5bbc9cc2cd34f](https://github.com/advanced-rest-client/connectivity-state/commit/b7a3b81a946724cc7efd447e28e5bbc9cc2cd34f))
+
+### refactor
+
+* removing Polymer from the component ([5bbfda13214a6b06646da3f62f7a1f295c72a201](https://github.com/advanced-rest-client/connectivity-state/commit/5bbfda13214a6b06646da3f62f7a1f295c72a201))
+
+### Update
+
+* Updating import paths to match web spec ([11909b1a72875d10d0a07bc82633ce199db57898](https://github.com/advanced-rest-client/connectivity-state/commit/11909b1a72875d10d0a07bc82633ce199db57898))
+
+
+
