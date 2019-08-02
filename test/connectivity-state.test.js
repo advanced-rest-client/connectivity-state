@@ -1,6 +1,5 @@
 import { fixture, assert } from '@open-wc/testing';
 import sinon from 'sinon/pkg/sinon-esm.js';
-import { a11ySuite } from '@advanced-rest-client/a11y-suite/index.js';
 import '../connectivity-state.js';
 
 describe('<connectivity-state>', function() {
@@ -116,6 +115,9 @@ describe('<connectivity-state>', function() {
       assert.equal(element.getAttribute('aria-hidden'), 'false');
     });
 
-    a11ySuite('Normal state', '<connectivity-state></connectivity-state>');
+    it('is accessible', async () => {
+      const element = await basicFixture();
+      await assert.isAccessible(element);
+    });
   });
 });

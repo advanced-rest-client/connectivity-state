@@ -5,23 +5,21 @@ const createBaseConfig = require('./karma.conf.js');
 
 module.exports = (config) => {
   const cnf = slSettings();
-  cnf.sauceLabs.testName = 'connectivity-state';
+  cnf.sauceLabs.testName = 'connectivity-sate';
   cnf.browsers = [
     'SL_Chrome',
     'SL_Chrome-1',
     'SL_Firefox',
     'SL_Firefox-1',
     'SL_Safari',
-    'SL_Safari-1',
-    'SL_EDGE',
+    'SL_EDGE'
   ];
   if (process.env.TRAVIS) {
-    const buildLabel =
-      'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')';
+    const buildLabel = 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')';
 
     cnf.browserStack = {
       build: buildLabel,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
     };
 
     cnf.sauceLabs.build = buildLabel;
