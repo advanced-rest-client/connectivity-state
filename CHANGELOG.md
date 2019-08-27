@@ -45,3 +45,7 @@
 
 
 
+# [3.0.0](https://github.com/advanced-rest-client/connectivity-state/compare/2.0.0...3.0.0) (2019-08-27)
+
+
+
