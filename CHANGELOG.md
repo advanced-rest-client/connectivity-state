@@ -49,3 +49,37 @@
 
 
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/advanced-rest-client/connectivity-state/compare/2.0.0...3.0.0) (2020-01-07)
+
+## Build
+
+* bumping version [d8def05](https://github.com/advanced-rest-client/connectivity-state/commit/d8def05a1fc05b8a77be4a84111ad962c9683853) by Pawel Psztyc
+
+
+## Update
+
+* upgrading project after audtir errors [f81fad0](https://github.com/advanced-rest-client/connectivity-state/commit/f81fad080afbafb0fe1dc2a64ec3d7a12ae9454b) by Pawel
+
+
+## Documentation
+
+* fixing badges in readme file [ab10efa](https://github.com/advanced-rest-client/connectivity-state/commit/ab10efa687e8f03b57b21b01cac6c846a8d9111a) by Pawel Psztyc
+* updating typpings [d8e81f9](https://github.com/advanced-rest-client/connectivity-state/commit/d8e81f9eb3b8a6013bcd85e4b0ac77b28fdeea5d) by Pawel Psztyc
+
+
+## Refactor
+
+* removing Polymer from the component [5bbfda1](https://github.com/advanced-rest-client/connectivity-state/commit/5bbfda13214a6b06646da3f62f7a1f295c72a201) by Pawel Psztyc
+
+
+## Other
+
+* Update: Updating import paths to match web spec
+ [11909b1](https://github.com/advanced-rest-client/connectivity-state/commit/11909b1a72875d10d0a07bc82633ce199db57898) by Pawel Psztyc
+* New: Adding npm ignore file
+ [b7a3b81](https://github.com/advanced-rest-client/connectivity-state/commit/b7a3b81a946724cc7efd447e28e5bbc9cc2cd34f) by Pawel Psztyc
+* Breaking: Upgrading to Polymer 3
+ [7f63399](https://github.com/advanced-rest-client/connectivity-state/commit/7f633997b5353d760dd42f5d17803e48a88de11b) by Pawel Psztyc
+
+
